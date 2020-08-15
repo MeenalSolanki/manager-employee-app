@@ -24,9 +24,25 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.css",
+             "src/assets/register/vendor/mdi-font/css/material-design-iconic-font.min.css",
+             "src/assets/register/vendor/font-awesome-4.7/css/font-awesome.min.css",
+             "src/assets/register/vendor/select2/select2.min.css",
+             "src/assets/register/vendor/datepicker/daterangepicker.css",
+             "src/assets/register/css/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/register/js/navbar.js",
+              "src/assets/register/vendor/jquery/jquery.min.js",
+              "src/assets/register/vendor/select2/select2.min.js",
+              "src/assets/register/vendor/datepicker/moment.min.js",
+              "src/assets/register/vendor/datepicker/daterangepicker.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/register/js/global.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -88,6 +104,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +136,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "manager-employee-app"
+    }
+  },
+  "defaultProject": "manager-employee-app",
+  "cli": {
+    "analytics": false
+  }
 }

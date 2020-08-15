@@ -1,0 +1,94 @@
+<div *ngIf="isLoggedIn;  else loggedOut">
+
+<div class="topnav" id="myTopnav">
+  <button class="active">{{username}} <i  class="fas fa-user"></i></button>
+  <button (click)="openAddEmployeeModel()">Add Employee <i  class="fas fa-users"  ></i></button> 
+  <button (click)="logout()" type="submit">Logout  <i class="fas fa-sign-out-alt"></i></button>
+ 
+    
+  </div>
+  
+  <div class="container">
+    <br>
+    <h2> Employees Directory</h2>
+    <hr>
+    <br>
+    <hr>
+    
+   
+
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th>First Name
+          <th> Last Name
+          <th>Email
+          
+         
+          <th colspan="3" sty >Action
+        </tr>
+        </thead>
+    <!--  	-->
+        <tbody>
+          <tr *ngFor="let employee of employees">
+          
+          <td >{{employee.firstName}}
+          <td >{{employee.lastName}}
+          <td >{{employee.email}}
+              
+            <td style="padding:2px">
+              <a class="btn btn--blue btn-sm"   (click)="detailsEmployee(employee)"> Details</a>
+
+          <td style="padding:2px"><a 
+          class="btn btn-info btn-sm"   (click)="updateEmployee(employee)"> Update</a>
+          
+          <td style="padding:2px">
+            <a   class="btn btn-danger btn-sm"
+          (click)="deleteEmployee(employee.empid)"> Delete</a>
+          </tr>			
+        </tbody>
+      
+      
+      </table> <!--  -->
+      <div class="alert alert-success container " style="margin-top: 10%; font-size:20px" *ngIf="employees?.length == 0">   
+        No Employee Found
+      </div>
+    </div>
+    <div class="footer-pagination" >
+      <div class="row">
+          <div class="col-md-9" style="padding-left:30%">
+              <ngb-pagination [(page)] ="thePageNumber" 
+                              [pageSize]="thePageSize"
+                              [maxSize]="5"
+                              [boundaryLinks]="true"
+                              [collectionSize] ="theTotalElements"
+                              (pageChange) ="listEmployee()">
+
+                              
+              </ngb-pagination>
+          
+          </div>
+          <div class="col-md-3 mt-2" style="text-align: right;margin-left:-20px">
+              <span class="mr-2">
+                     Page Size 
+              </span>
+
+              <select (change)="updatePageSize($event.target.value)">
+                  <option >3</option>
+                  <option>5</option>
+                  <option  selected="true">10</option>
+                  <option>15</option>
+              </select>
+
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  <div class="alert alert-success container " style="margin-top: 10%; font-size:20px"> You are Logged Out. </div>
+</ng-template>
+
+  
+ 

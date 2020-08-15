@@ -1,0 +1,96 @@
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div class="wrapper wrapper--w790">
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Sign In</h2>
+            </div>
+            <div class="card-body">
+                  
+                <form  
+                *ngIf="!isLoggedIn"
+                name="form"
+                (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate>
+                 
+                    
+                    <!-- Email -->
+                    <div class="form-row">
+                        <div class="name">Email</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input
+                                 type="email"
+                                 class="input--style-5"  
+                                 name="email"
+                                 [(ngModel)]="form.email"
+                                 required
+                                 email
+                                 #email="ngModel">
+                            </div>
+
+                            <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                                <div *ngIf="email.errors.required">Email is required</div>
+                                <div *ngIf="email.errors.email">
+                                  Email must be a valid email address
+                                </div>
+                              </div>
+
+
+                        </div>
+
+                    </div>
+                  
+
+                    <div class="form-row">
+                        <div class="name">Password</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input
+                                 class="input--style-5"
+                                  type="password"
+                                   name="password"
+                                   [(ngModel)]="form.password"
+                                   required
+                                   minlength="6"
+                                   #password="ngModel">
+                       
+                            </div>
+
+                            <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                                <div *ngIf="password.errors.required">
+                                    Password is required (minimum 6 characters)
+                                </div>
+                                <div *ngIf="password.errors.minlength">
+                                  Password must be at least 6 characters
+                                </div>
+                              </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn--radius-2 btn--red"   >Sign in</button>
+                          
+                        <div class="form-group">
+                            <div class="alert alert-danger" *ngIf="f.submitted && isLoginFailed" >
+                                Login failed: {{ errorMessage }} 
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    <br>
+                      <div class="form-row">
+                        Don't have an account? <a routerLink="/register"> Sign up</a>
+                      </div>
+                </form>
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                    You are Logged In
+                  </div>               
+               
+  
+            </div>
+        </div>
+    </div>
+</div>
+
+
