@@ -142,11 +142,11 @@ export class HomeComponent implements OnInit
 detailsEmployee(employee:Employee)
 {
   this.dialogProperty();
+  this.dialogConfig.height = "440px";
   this.dialogConfig.disableClose = false;
-    this.dialogConfig.data= { pageValue: employee }
+  this.dialogConfig.data= { pageValue: employee }
  
-    const modalDialog = this.matDialog.open(ShowDetailsComponent, this.dialogConfig);
-
+  const modalDialog = this.matDialog.open(ShowDetailsComponent, this.dialogConfig);
 }
 
 }
